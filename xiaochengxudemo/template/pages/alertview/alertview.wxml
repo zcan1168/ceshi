@@ -1,0 +1,12 @@
+<view class="container">
+    <view class='flex-2'></view>
+    <view class="alert-view">
+        <view class="alert-title">{{ title }}</view>
+        <view class="alert-msg"> {{ msg }}</view>
+        <view class="bottom-box"  hover="true" hover-class="active" catchtap="sureBtnTouched">
+            <view class="line"></view>
+            <view class="alert-button">{{ button }}</view>
+        </view>
+    </view>
+    <view class="flex-3"></view>
+</view>

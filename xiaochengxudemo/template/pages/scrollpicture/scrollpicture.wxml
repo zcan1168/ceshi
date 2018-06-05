@@ -1,0 +1,14 @@
+<view id="container">
+  <swiper autoplay="{{autoplay}}" interval="{{interval}}" circular="{{circular}}" bindchange="changed" >
+    <block wx:for="{{list}}">
+      <swiper-item data-index="{{index}}" bindtap="itemclicked">
+        <image src="{{item.url}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="indicators" style="visibility: {{ indicator ? 'visible':'hidden'}};">
+      <block wx:for="{{list}}">
+          <view class="indicator indicator-{{ currentIndex==index ?'focus':'normal' }}"/>
+      </block>
+  </view>
+</view>

@@ -1,0 +1,61 @@
+header {
+		position: relative;
+		display: block;
+	  height: 44px;
+		width: 100%;
+		background-color: rgb(238,42,35);
+		color: #FFF;
+		font-size: 18px;
+		line-height: 44px;
+		text-align: center;
+}
+
+.header-item-left {
+	  position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 44px;
+		height: 44px;
+		background: url(../image/back.png) no-repeat center center;
+		background-size: 22px 22px;
+}
+
+.active {
+	  background-color: #f1f1f1;
+}
+
+.flex-box {
+	  display: -webkit-box;
+}
+
+.flex-v {
+	  -webkit-box-orient: vertical;
+}
+
+.flex-1 {
+	  -webkit-box-flex: 1;
+}
+.flex-2 {
+	  -webkit-box-flex: 2;
+}
+.flex-3 {
+	  -webkit-box-flex: 3;
+}
+.flex-4 {
+	  -webkit-box-flex: 4;
+}
+.flex-5 {
+	  -webkit-box-flex: 5;
+}
+.flex-6 {
+	  -webkit-box-flex: 6;
+}
+.flex-7 {
+	  -webkit-box-flex: 7;
+}
+.flex-8 {
+	  -webkit-box-flex: 8;
+}
+.flex-9 {
+	  -webkit-box-flex: 9;
+}

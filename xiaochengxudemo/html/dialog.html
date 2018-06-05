@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Dialog View</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style type="text/css">
+    html,body{
+        height: 100%;
+        width: 100%;
+    }
+    ul {
+        width: 100%;
+        margin-top: 51px;
+    }
+
+    li {
+        position: relative;
+        height: 50px;
+        margin: 10px 20px;
+        background-image: linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 50px;
+        color: #000;
+        text-align: center;
+    }
+    li:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+        border: 1px solid rgb(223,223,223);
+        border-radius: 6px;
+        -webkit-transfrom: scaleY(.5,.5);
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-item-left" tapmode="" onclick="goBack();"></div>
+        模态弹窗
+    </header>
+    <div class="flex-1"></div>
+    <ul>
+        <li tapmode="active" onclick="fnOpenAlertView()">Alert 弹窗</li>
+        <li tapmode="active" onclick="fnOpenConfirmView()">Confirm 弹窗</li>
+        <li tapmode="active" onclick="fnOpenSheetView()">Sheet 弹窗</li>
+    </ul>
+    <div class="flex-1"></div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+    var UITemplate;
+    apiready = function(){
+        fixStatusBar(); //沉浸式修复
+    };
+
+    function fnOpenAlertView() {
+        WXUI().alert({
+            title: 'APICloud 温馨提示',
+            msg: '天干物燥，小心火烛!'
+        })
+    }
+
+    function fnOpenConfirmView() {
+        WXUI().confirm({
+            title: { content: 'APICloud 温馨提示' },
+            msg: { content: '账户余额不足，红包功能无法使用!' },
+            buttons: [{ content: '返回', style: 'color: #000;' },{ content: '充值' }]
+        })
+    }
+
+    function fnOpenSheetView() {
+        WXUI().sheet({
+            title: '你想让谁发红包',
+            items: [{name: 'Sean'},{name: 'Broad'},{name: 'May'}],
+            cancleName: '取消'
+        })
+    }
+
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>Scroll-X View</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style type="text/css">
+        html,body{
+            height: 100%;
+            font-size: 36px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+        .title {
+            height: 60px;
+            width: 100%;
+            text-align: center;
+            margin: auto;
+            color: 000;
+        }
+    </style>
+</head>
+<body id="container">
+    <div class="flex-4"></div>
+    <div id="container-title" class="title">Frame1</div>
+    <div class="flex-5"></div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    var UITemplate;
+    var eContainer = document.getElementById('container');
+    var eContainerTitle = document.getElementById('container-title');
+    var index;
+    apiready = function(){
+        index = api.pageParam.index;
+        fnSetFrameColor(index)
+    };
+
+
+    function fnSetFrameColor(pIndex) {
+        var tColor = pIndex%2 == 1 ? 'rgb(4,190,2)':'rgb(148,111,250)';
+        eContainer.style.backgroundColor = tColor;
+        eContainerTitle.style.color = '#FFF';
+        eContainerTitle.innerHTML = 'Frame'+(pIndex+1);
+    }
+
+
+</script>
+</html>

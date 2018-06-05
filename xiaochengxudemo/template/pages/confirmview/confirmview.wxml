@@ -1,0 +1,15 @@
+<view class="container">
+    <view class='flex-2'></view>
+    <view class="confirm-view">
+        <view class="confirm-title" style="{{ title.style }}">{{ title.content }}</view>
+        <view class="confirm-msg" style="{{ msg.style }}"> {{ msg.content }}</view>
+        <view style="position:relative; width:100%;"><view class="line"></view></view>
+        <view class='buttons-container'>
+            <block wx:for="{{ buttons }}">
+                <view wx:if="{{ index>0 }}" class="line-row"></view>
+                <view hover="true" hover-class="active" class="confirm-button" style="{{ item.style }}" data-index="{{ index }}" catchtap="btnTouched">{{ item.content }}</view>
+            </block>
+        </view>
+    </view>
+    <view class="flex-3"></view>
+</view>

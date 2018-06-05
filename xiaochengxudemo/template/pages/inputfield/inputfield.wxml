@@ -1,0 +1,12 @@
+
+<view style="width:100%;height:100%;">
+    <view class="footer">
+        <image class="add" src="add.png" bindtap="leftBtnTap"/>
+        <view class="input-background">
+            <input value="{{ content }}" confirm-type="send" focus="{{ focusStatus }}" placeholder="{{placeholder.length>0?placeholder:''}}" bindinput="inputContent" bindfocus="inputFocus" bindblur="inputBlur" bindconfirm="onconfirm"/>
+        </view>
+        <view class="send" bindtap="rightBtnTap">
+            <text>{{ rightBtnName }}</text>
+        </view>
+    </view>
+</view>
