@@ -1,7 +1,0 @@
-<view class="container">
-    <view class="cell">
-        <view class="key" style="color: {{ labelKeyColor }};">{{ labelKey }}</view>
-        <view class="value" style="color: {{ labelValueColor }};">{{ labelValue }}{{ unitName }}</view>
-    </view>
-    <slider class="cell-slider" backgroundColor="{{ backgroundColor }}" activeColor="{{ activeColor }}" value="{{ value }}" bindchange="bindchange"/>
-</view>

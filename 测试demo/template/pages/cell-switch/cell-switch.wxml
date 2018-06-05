@@ -1,8 +1,0 @@
-<view class="container">
-    <block wx:for="{{ dataSource }}">
-        <view class='cell' style='{{index==0 ?"border-top-style: none;":""}}'>
-            <text>{{ item.title }}</text>
-            <switch class="cell-switch" data-key="{{ item.key }}" checked="{{item.state}}" bindchange="bindchange"/>
-        </view>
-    </block>
-</view>
