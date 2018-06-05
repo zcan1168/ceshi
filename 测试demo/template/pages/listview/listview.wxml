@@ -1,0 +1,18 @@
+<view class="container">
+    <scroll-view scroll-y="true" style="width:100%;height:100%;" bindscrolltolower="pullUp">
+        <block wx:for="{{dataSource}}">
+            <view style="width:100%;height:140px;" bindtap="cellTouched">
+                <view class="list-cell" >
+                    <view class="cell-view-left">
+                        <view class="cell-title">{{item.title}}</view>
+                        <view class="cell-view-bottom">
+                            <text class="cell-type">{{item.type}}</text>
+                            <text>{{item.date}}</text>
+                        </view>
+                    </view>
+                    <image class="cell-icon" src="{{item.imgSrc}}" background-size="cover"></image>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+</view>

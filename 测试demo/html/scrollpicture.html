@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>ScrollPicture View</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style type="text/css">
+    html,body{
+        height: 100%;
+    }
+    </style>
+</head>
+<body>
+    <header><div class="header-item-left" tapmode="" onclick="goBack();"></div> 轮播视图</header>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+    var UITemplate;
+    var headerHeight = 0;
+    var scrollHeight;   // 滚动轮播图高度
+    var switchHeight;  // 开关控件高度
+    apiready = function(){
+        fixStatusBar(); //沉浸式修复
+        fnInitUITemplate();
+    };
+
+    function fnInitUITemplate() {
+        UITemplate = api.require("UITemplate");
+        UITemplate.init({
+            path: 'widget://template'
+        }, function(ret,err){
+            if(ret){
+                fnOpenView();
+                fnOpenSwitchView();
+                fnOpenSliderView();
+            }else{
+                alert('UITemplate.init err:'+JSON.stringify(err));
+            }
+        });
+    }
+
+    function fnOpenView() {
+        scrollHeight = api.winWidth*406/720;
+        UITemplate.openView({
+            name: 'scrollPicture',
+            url: 'pages/scrollpicture/scrollpicture',
+            rect: {
+                marginTop: headerHeight,
+                h: scrollHeight,
+                w: 'auto'
+            }
+        }, function(ret,err){
+            // console.log('UITemplate.openView callback=>ret:'+JSON.stringify(ret)+'___err=='+JSON.stringify(err));
+        });
+    }
+
+    function fnOpenSwitchView() {  // 打开switch 开关页
+
+        var cellData = [
+            {
+                title: '指示器',
+                state: true,
+                key: 'indicator'
+            },
+            {
+                title: '自动播放',
+                state: true,
+                key: 'autoPlay'
+            }];
+        switchHeight = 50*cellData.length;
+        UITemplate.openView({
+            name: 'cell-switch',
+            url: 'pages/cell-switch/cell-switch',
+            rect: {
+                marginTop: headerHeight+scrollHeight+40,
+                h: switchHeight,
+                w: 'auto'
+            },
+            data: {
+                pageParam: {
+                    dataSource: cellData
+                }
+            }
+        }, function(ret,err){
+            // console.log('UITemplate[cell-switch].openView callback=>ret:'+JSON.stringify(ret)+'___err=='+JSON.stringify(err));
+            if (ret && 'switchChange' == ret.type) {
+                if ('autoPlay' == ret.key) {
+                    fnSetAutoPlay(ret.status);
+                }
+                else if ('indicator' == ret.key) {
+                    fnSetIdentifierIsShow(ret.status);
+                }
+            }
+        });
+    }
+
+    function fnOpenSliderView() {  // 打开slider 滑块页
+        var tMarginTop = headerHeight+scrollHeight+40+switchHeight;
+        console.log('tMarginTop='+tMarginTop);
+        UITemplate.openView({
+            name: 'cell-slider',
+            url: 'pages/cell-slider/cell-slider',
+            rect: {
+                marginTop: headerHeight+scrollHeight+40+switchHeight,
+                h: 108,
+                w: 'auto'
+            },
+            data: {
+                pageParam: {
+                    labelKey: '自动播放间隔时长',
+                    unitName: 'ms',
+                    initValue: 500,
+                    step: 50,
+                    value: 50
+                }
+            }
+        }, function(ret,err){
+            // console.log('UITemplate[cell-switch].openView callback=>ret:'+JSON.stringify(ret)+'___err=='+JSON.stringify(err));
+            if (ret && 'valueChange' == ret.type) {
+                fnSetIntervalNum(ret.realValue);
+            }
+        });
+    }
+
+    function fnSetIdentifierIsShow(isShow) {  // 设置是否显示指示器
+        var tSign = !!isShow;
+        console.log('tSign=='+tSign);
+        UITemplate.setData({
+            name: 'scrollPicture',
+            data: {
+                indicator: tSign
+            }
+        });
+    }
+
+    function fnSetAutoPlay(isAuto) {  // 设置轮播图是否自动播放
+        var tSign = !!isAuto;
+        UITemplate.setData({
+            name: 'scrollPicture',
+            data: {
+                autoplay: tSign
+            }
+        });
+    }
+
+    function fnSetIntervalNum(num) {  // 设置轮播图是否自动播放
+        if('number' != typeof num){
+            return;
+        }
+        UITemplate.setData({
+            name: 'scrollPicture',
+            data: {
+                interval: num
+            }
+        });
+    }
+
+
+
+
+</script>
+</html>

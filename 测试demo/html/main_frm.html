@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style type="text/css">
+    html,body{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0);
+    }
+
+    ul {
+        margin: auto 30px;
+        padding: 0px 20px 5px;
+        -webkit-flex-grow: 1;
+        -webkit-border-radius: 10px;
+        background-color: rgba(255,255,255,0.8);
+    }
+
+    li {
+        margin-top: 2px;
+        position: relative;
+        height: 49px;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 50px;
+        color: #000;
+        text-align: center;
+    }
+    li:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: rgba(55,55,55,0.2);
+        -webkit-transfrom: scaleY(.5);
+    }
+    .title {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .title span {
+        color: rgb(133,214,76);
+    }
+    .btn-exit {
+        position: relative;
+        height: 49px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 50px;
+        color: #000;
+        text-align: center;
+    }
+    </style>
+</head>
+<body class="flex-box flex-v bg_blur">
+    <div class="flex-3"></div>
+    <ul>
+        <li class="title">APICloud 演示DEMO</li>
+        <li tapmode="" onclick="fnOpenListPage()">列表视图</li>
+        <li tapmode="" onclick="fnOpenScrollPage()">滑动分段导航条</li>
+        <li tapmode="" onclick="fnOpenScrollPicture()">轮播视图</li>
+        <li tapmode="" onclick="fnOpenInputField()">输入框</li>
+        <li tapmode="" onclick="fnOpenDialogPage()">模态弹窗</li>
+        <div class="btn-exit" tapmode="" onclick="exitApp()">退出</div>
+    </ul>
+
+    <div class="flex-5"></div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+    var UITemplate;
+    apiready = function(){
+    };
+
+
+
+    function exitApp() {
+        api.closeWidget();
+    }
+
+    function fnOpenListPage() {
+        api.openWin({
+            name: 'listview',
+            url: './listview.html'
+        });
+    }
+
+    function fnOpenScrollPage() {
+        api.openWin({
+            name: 'scrollsegmentbar',
+            url: './scrollsegmentbar.html'
+        });
+    }
+
+    function fnOpenScrollPicture() {
+        api.openWin({
+            name: 'scrollpicture',
+            url: './scrollpicture.html'
+        });
+    }
+
+    function fnOpenInputField() {
+        api.openWin({
+            name: 'inputfield',
+            url: './inputfield.html'
+        });
+    }
+
+    function fnOpenDialogPage() {
+        api.openWin({
+            name: 'dialog',
+            url: './dialog.html'
+        });
+    }
+
+</script>
+</html>
